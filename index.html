@@ -13,6 +13,7 @@
             --azul-ligar: #007AFF;
             --fundo: #F0F4F0;
             --branco: #FFFFFF;
+            /* Categorias de Cores */
             --cor-liturgia: #1565C0;
             --cor-catequese: #EF6C00;
             --cor-conselho: #455A64;
@@ -20,12 +21,12 @@
             --cor-familia: #6A1B9A;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, sans-serif; }
         body { background-color: var(--fundo); color: #333; padding-bottom: 50px; }
 
         header {
             background: linear-gradient(135deg, var(--verde-padroeiro), var(--verde-claro));
-            color: white; padding: 2rem 1rem; text-align: center;
+            color: white; padding: 2.5rem 1rem; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
         main { max-width: 1000px; margin: 0 auto; padding: 1rem; }
@@ -54,42 +55,47 @@
         }
 
         .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .highlight { background-color: #FFF176; font-weight: bold; padding: 0 2px; }
+        .highlight { background-color: #FFF176; font-weight: bold; border-radius: 2px; }
         .contact-group { background: #f8f9fa; border-radius: 10px; padding: 12px; margin-top: 10px; border: 1px solid #eee; }
         .action-buttons { display: flex; gap: 8px; margin-top: 8px; }
 
-        .btn { flex: 1; padding: 12px; border: none; border-radius: 8px; color: white; cursor: pointer; text-decoration: none; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+        .btn { flex: 1; padding: 12px; border: none; border-radius: 8px; color: white; cursor: pointer; text-decoration: none; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; transition: 0.2s; }
         .btn-whatsapp { background-color: var(--verde-whatsapp); }
         .btn-call { background-color: var(--azul-ligar); }
         .btn-copy { background-color: #546E7A; }
         .btn-copy.success { background-color: #2E7D32; }
 
-        .diretor-info { margin-top: auto; padding-top: 15px; font-size: 0.85rem; color: #666; font-style: italic; }
+        .diretor-info { margin-top: auto; padding-top: 15px; font-size: 0.85rem; color: #666; font-style: italic; border-top: 1px solid #eee; margin-top: 10px; }
+        
+        @media (max-width: 600px) {
+            .secretaria-card { flex-direction: column; text-align: center; }
+            .action-buttons { width: 100%; }
+        }
     </style>
 </head>
 <body>
 
     <header>
         <h1>Matriz São Judas Tadeu</h1>
-        <p><i class="fas fa-users"></i> Coordenações Paroquiais 2026</p>
+        <p><i class="fas fa-users"></i> Guia de Contatos 2026</p>
     </header>
 
     <main>
         <div class="secretaria-card">
             <div>
-                <h2 style="color: #D32F2F"><i class="fas fa-info-circle"></i> Secretaria Paroquial</h2>
-                <p>Atendimento Geral e Plantão</p>
+                <h2 style="color: #D32F2F"><i class="fas fa-headset"></i> Secretaria Paroquial</h2>
+                <p>Ponto de socorro para dúvidas gerais</p>
                 <p><strong>(38) 99241-0006</strong></p>
             </div>
-            <div class="action-buttons" style="min-width: 250px;">
-                <a href="https://wa.me/5538992410006" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i></a>
+            <div class="action-buttons" style="min-width: 250px; margin-top: 10px;">
+                <a href="https://wa.me/5538992410006" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i></a>
                 <a href="tel:+5538992410006" class="btn btn-call"><i class="fas fa-phone"></i></a>
                 <button onclick="copyToClipboard('38 99241-0006', this)" class="btn btn-copy"><i class="fas fa-copy"></i></button>
             </div>
         </div>
 
         <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Pesquisar pastoral, coordenador ou diretor...">
+            <input type="text" id="searchInput" placeholder="🔍 Busque por nome, pastoral ou diretor...">
         </div>
 
         <div id="results"></div>
@@ -133,11 +139,16 @@
             { organismo: "Pastoral da Acolhida", nome: "Ionise", telefone: "38 98807-1653", diretor: "Pe. Marco Simões" },
             { organismo: "Pastoral do Dizimo", nome: "Ruy e Cláudia", telefone: "38 99952-1530 / 38 99999-6910", diretor: "Diácono Paulo Nascimento" },
             { organismo: "Pastoral Familiar", nome: "Aline e Luciano", telefone: "38 99740-4888 / 38 99997-9403", diretor: "Pe. Marco Simões" },
+            { organismo: "Pastoral Litúrgica", nome: "Sarah", telefone: "38 99146-7612", diretor: "Pe. Marco Simões" },
             { organismo: "Perseverança", nome: "Sandra", telefone: "38 98866-9139", diretor: "Pe. Mazinho" },
             { organismo: "Preparação Noivos", nome: "Terezinha e Gilberto", telefone: "38 99156-7579 / 38 99848-0513", diretor: "Pe. Marco Simões" },
             { organismo: "R.C.C.", nome: "Juliana", telefone: "38 98815-8348", diretor: "Pe. Mazinho" },
             { organismo: "Transmissão", nome: "Ávilo", telefone: "38 99112-6733", diretor: "Pe. Marco Simões" }
-        ];
+        ].sort((a, b) => a.organismo.localeCompare(b.organismo));
+
+        function removerAcentos(texto) {
+            return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+        }
 
         function getCategoryColor(org) {
             const n = org.toLowerCase();
@@ -150,26 +161,45 @@
 
         function highlight(text, query) {
             if (!query) return text;
-            const regex = new RegExp(`(${query})`, "gi");
-            return text.replace(regex, `<span class="highlight">$1</span>`);
+            const cleanQuery = removerAcentos(query);
+            const cleanText = removerAcentos(text);
+            const regex = new RegExp(`(${cleanQuery})`, "gi");
+            
+            const matches = [...cleanText.matchAll(regex)];
+            let finalHtml = "";
+            let cursor = 0;
+            
+            matches.forEach(match => {
+                const start = match.index;
+                const end = start + match[0].length;
+                finalHtml += text.substring(cursor, start) + `<span class="highlight">${text.substring(start, end)}</span>`;
+                cursor = end;
+            });
+            
+            finalHtml += text.substring(cursor);
+            return finalHtml || text;
         }
 
         function copyToClipboard(text, btn) {
             navigator.clipboard.writeText(text);
             const icon = btn.innerHTML;
-            btn.classList.add('success'); btn.innerHTML = '<i class="fas fa-check"></i>';
+            btn.classList.add('success');
+            btn.innerHTML = '<i class="fas fa-check"></i>';
             setTimeout(() => { btn.classList.remove('success'); btn.innerHTML = icon; }, 2000);
         }
 
         function render() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
+            const rawQuery = document.getElementById('searchInput').value;
+            const cleanQuery = removerAcentos(rawQuery);
             const container = document.getElementById('results');
             container.innerHTML = '';
 
-            pastorais.filter(item => {
-                const searchStr = `${item.organismo} ${item.nome} ${item.diretor}`.toLowerCase();
-                return searchStr.includes(query);
-            }).forEach(item => {
+            const filtered = pastorais.filter(item => {
+                const searchArea = removerAcentos(`${item.organismo} ${item.nome} ${item.diretor}`);
+                return searchArea.includes(cleanQuery);
+            });
+
+            filtered.forEach(item => {
                 const color = getCategoryColor(item.organismo);
                 const card = document.createElement('div');
                 card.className = 'card';
@@ -189,10 +219,10 @@
                 }).join('');
 
                 card.innerHTML = `
-                    <h2 style="color:${color}; font-size: 1.2rem; margin-bottom: 8px;">${highlight(item.organismo, query)}</h2>
-                    <p><strong>👤 Coord:</strong> ${highlight(item.nome, query)}</p>
+                    <h2 style="color:${color}; font-size: 1.2rem; margin-bottom: 8px;">${highlight(item.organismo, rawQuery)}</h2>
+                    <p><strong>👤 Coord:</strong> ${highlight(item.nome, rawQuery)}</p>
                     ${telsHtml}
-                    <div class="diretor-info"><i class="fas fa-cross"></i> Dir: ${highlight(item.diretor, query)}</div>
+                    <div class="diretor-info"><i class="fas fa-cross"></i> Dir: ${highlight(item.diretor, rawQuery)}</div>
                 `;
                 container.appendChild(card);
             });
