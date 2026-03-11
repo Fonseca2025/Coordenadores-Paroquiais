@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coordenação Paroquial - São Judas Tadeu</title>
+    <title>Guia de Contatos - Paróquia São Judas Tadeu</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -13,29 +13,27 @@
             --azul-ligar: #007AFF;
             --fundo: #F0F4F0;
             --branco: #FFFFFF;
-            /* Cores de Categoria */
+            /* Categorias */
             --cor-liturgia: #1565C0;
             --cor-catequese: #EF6C00;
             --cor-conselho: #455A64;
-            --cor-movimento: #7B1FA2;
-            --cor-default: var(--verde-padroeiro);
+            --cor-espiritualidade: #C2185B;
+            --cor-familia: #6A1B9A;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, sans-serif; }
-
-        body { background-color: var(--fundo); color: #333; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: var(--fundo); color: #333; padding-bottom: 50px; }
 
         header {
             background: linear-gradient(135deg, var(--verde-padroeiro), var(--verde-claro));
             color: white;
-            padding: 2.5rem 1rem;
+            padding: 2rem 1rem;
             text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
-        main { max-width: 950px; margin: 0 auto; padding: 1rem; }
+        main { max-width: 1000px; margin: 0 auto; padding: 1rem; }
 
-        /* Card Secretaria */
         .secretaria-card {
             background: white;
             border-left: 10px solid #D32F2F;
@@ -52,7 +50,6 @@
         }
 
         .search-container { position: sticky; top: 10px; z-index: 1000; margin-bottom: 2rem; }
-
         #searchInput {
             width: 100%;
             padding: 1.2rem 1.5rem;
@@ -65,85 +62,48 @@
 
         #results {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 1.5rem;
         }
 
-        /* Estilos dos Cards com Cores Dinâmicas */
         .card {
             background: white;
             border-radius: 15px;
             padding: 1.5rem;
             transition: all 0.3s ease;
+            border-top: 8px solid var(--cor-borda);
             display: flex;
             flex-direction: column;
-            border-top: 8px solid var(--cor-borda, var(--cor-default));
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
 
         .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .highlight { background-color: #FFF176; font-weight: bold; padding: 0 2px; }
+        .contact-group { background: #f8f9fa; border-radius: 10px; padding: 12px; margin-top: 10px; border: 1px solid #eee; }
+        .action-buttons { display: flex; gap: 8px; margin-top: 8px; }
 
-        .highlight { background-color: #FFF176; font-weight: bold; border-radius: 3px; }
-
-        .tag {
-            display: inline-block;
-            font-size: 0.7rem;
-            padding: 2px 8px;
-            border-radius: 10px;
-            background: #eee;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
-
-        .contact-group {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 12px;
-            margin-top: 10px;
-        }
-
-        .tel-text { font-weight: 600; font-size: 0.95rem; color: #444; margin-bottom: 8px; display: block; }
-
-        .action-buttons { display: flex; gap: 8px; }
-
-        .btn {
-            flex: 1;
-            padding: 10px;
-            border: none;
-            border-radius: 8px;
-            color: white;
-            cursor: pointer;
-            text-align: center;
-            transition: 0.2s;
-            font-size: 1.1rem;
-            text-decoration: none;
-        }
-
+        .btn { flex: 1; padding: 12px; border: none; border-radius: 8px; color: white; cursor: pointer; text-decoration: none; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
         .btn-whatsapp { background-color: var(--verde-whatsapp); }
         .btn-call { background-color: var(--azul-ligar); }
         .btn-copy { background-color: #546E7A; }
         .btn-copy.success { background-color: #2E7D32; }
 
-        footer { text-align: center; padding: 3rem; color: #666; font-size: 0.85rem; }
-
-        @media (max-width: 600px) {
-            .secretaria-card { text-align: center; flex-direction: column; }
-            .btn { padding: 12px; }
-        }
+        .diretor-info { margin-top: auto; padding-top: 15px; font-size: 0.85rem; color: #666; font-style: italic; }
     </style>
 </head>
 <body>
 
     <header>
         <h1>Matriz São Judas Tadeu</h1>
-        <p><i class="fas fa-church"></i> Montes Claros - MG</p>
+        <p><i class="fas fa-users"></i> Coordenações Paroquiais 2026</p>
     </header>
 
     <main>
         <div class="secretaria-card">
             <div>
-                <h2 style="color: #D32F2F">Secretaria Paroquial</h2>
-                <p>Atendimento Geral e Informações</p>
+                <h2 style="color: #D32F2F"><i class="fas fa-info-circle"></i> Secretaria Paroquial</h2>
+                <p>Plantão e Informações Gerais</p>
+                <p><strong>(38) 99241-0006</strong></p>
             </div>
             <div class="action-buttons" style="min-width: 250px;">
                 <a href="https://wa.me/5538992410006" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i></a>
@@ -153,57 +113,77 @@
         </div>
 
         <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Pesquisar por nome, pastoral ou diretor...">
+            <input type="text" id="searchInput" placeholder="Pesquisar pastoral, coordenador ou diretor...">
         </div>
 
         <div id="results"></div>
     </main>
 
-    <footer>
-        <p>Paróquia São Judas Tadeu - Montes Claros/MG</p>
-        <p>Desenvolvido para a Pastoral de Conjunto</p>
-    </footer>
-
     <script>
         const pastorais = [
-            { organismo: "Pastoral Litúrgica", nome: "Sarah", telefone: "38 99146-7612", diretor: "Pe. Marco Simões" },
             { organismo: "Pastoral da Acolhida", nome: "Ionise", telefone: "38 98807-1653", diretor: "Pe. Marco Simões" },
             { organismo: "Grupo de Leitores", nome: "Alex / Maris", telefone: "38 99192-9243 / 38 99141-9993", diretor: "Pe. Marco Simões" },
             { organismo: "Ministério de Coroinhas", nome: "Nilzete / Kátia", telefone: "38 99122-8414 / 38 99212-1213", diretor: "Pe. Marco Simões" },
+            { organismo: "Ministério de Acólitos", nome: "Edmárcia", telefone: "38 99872-8347", diretor: "Pe. Marco Simões" },
+            { organismo: "Ministérios de Música", nome: "Jeanine", telefone: "38 98847-2393", diretor: "Pe. Marco Simões" },
             { organismo: "MECEs", nome: "Yata / Suely", telefone: "38 99989-1979 / 38 99210-5556", diretor: "Pe. Marco Simões" },
+            { organismo: "Marcação de Missas", nome: "Edite", telefone: "38 99217-1120", diretor: "Pe. Marco Simões" },
+            { organismo: "Ornamentação", nome: "Terezinha", telefone: "38 99188-9211", diretor: "Pe. Marco Simões" },
+            { organismo: "Liturgia Mirim", nome: "Sandra", telefone: "38 98866-9139", diretor: "Pe. Marco Simões" },
             { organismo: "PASCOM", nome: "Cris / Claudio", telefone: "38 96828-7007 / 38 99160-0007", diretor: "Pe. Marco Simões" },
+            { organismo: "Transmissão", nome: "Ávilo", telefone: "38 99112-6733", diretor: "Pe. Marco Simões" },
             { organismo: "Núcleo Catequético", nome: "Josy", telefone: "38 99890-4207", diretor: "Pe. Mazinho" },
             { organismo: "Catequese da Crisma", nome: "Júnia", telefone: "38 99940-6139", diretor: "Pe. Mazinho" },
-            { organismo: "Comunidade São Judas Tadeu (Conselho)", nome: "Raquel", telefone: "38 99908-4728", diretor: "Pe. Marco Simões" }
-            // Adicione os demais conforme necessário
+            { organismo: "Perseverança", nome: "Sandra", telefone: "38 98866-9139", diretor: "Pe. Mazinho" },
+            { organismo: "R.C.C.", nome: "Juliana", telefone: "38 98815-8348", diretor: "Pe. Mazinho" },
+            { organismo: "Círculos Bíblicos", nome: "Cleide", telefone: "38 99103-1180", diretor: "Pe. Mazinho" },
+            { organismo: "Catequese com Adultos", nome: "Ismael e Zizi", telefone: "38 99953-4278 / 38 99931-4326", diretor: "Pe. Mazinho e Diácono Paulo Antônio" },
+            { organismo: "Batismo", nome: "Alex e Raissa", telefone: "38 99889-6867 / 38 99963-2130", diretor: "Pe. Mazinho e Diácono Paulo Antônio" },
+            { organismo: "Pastoral Familiar", nome: "Aline e Luciano", telefone: "38 99740-4888 / 38 99997-9403", diretor: "Pe. Marco Simões" },
+            { organismo: "Casos Consensuais", nome: "Gelza e Rubens", telefone: "38 98421-9661 / 38 99929-0464", diretor: "Pe. Marco Simões" },
+            { organismo: "Preparação Noivos", nome: "Terezinha e Gilberto", telefone: "38 99156-7579 / 38 99848-0513", diretor: "Pe. Marco Simões" },
+            { organismo: "ECC", nome: "Hugo e Paula Jane", telefone: "38 99934-9727 / 38 99819-2981", diretor: "Pe. Marco Simões" },
+            { organismo: "ENFIC", nome: "Maicon e Adriana", telefone: "38 99811-5499 / 38 99163-3049", diretor: "Pe. Marco Simões" },
+            { organismo: "EAC", nome: "Joenilton e Érica", telefone: "38 98806-9824 / 38 98848-4384", diretor: "Pe. Marco Simões" },
+            { organismo: "MAC", nome: "Felipe e Alessandra", telefone: "38 98403-4054 / 38 98415-7667", diretor: "Pe. Marco Simões" },
+            { organismo: "Pastoral do Dizimo", nome: "Ruy e Cláudia", telefone: "38 99952-1530 / 38 99999-6910", diretor: "Diácono Paulo Nascimento" },
+            { organismo: "Apostolado Oração", nome: "Gelza e Rubens", telefone: "38 98421-9661 / 38 99929-0464", diretor: "Diácono Paulo Nascimento" },
+            { organismo: "Mãe Rainha", nome: "Nice", telefone: "38 98409-4660", diretor: "Diácono Alvino" },
+            { organismo: "Legião de Maria", nome: "Lucinha", telefone: "38 98858-5926", diretor: "Diácono Alvino" },
+            { organismo: "Mulheres que Oram", nome: "Marília", telefone: "38 99172-0634", diretor: "Diácono Alvino" },
+            { organismo: "Pastoral Carcerária", nome: "Dílson", telefone: "38 99800-8309 / 38 3214-1084", diretor: "Diácono Alvino" },
+            { organismo: "Apostolado da Sagrada Face", nome: "Zina", telefone: "38 3216-1432 / 38 99212-2610", diretor: "Diácono Alvino" },
+            { organismo: "Comunidade Cristo Rei (Conselho)", nome: "Cleide", telefone: "38 99103-1180", diretor: "-" },
+            { organismo: "Comunidade Santo Inácio (Conselho)", nome: "Fábio e Vera", telefone: "38 99987-6852 / 38 99961-7629", diretor: "-" },
+            { organismo: "Comunidade N. Sra. da Boa Viagem (Conselho)", nome: "André", telefone: "38 9923-6172", diretor: "-" },
+            { organismo: "Comunidade São Judas Tadeu (Conselho)", nome: "Rachel", telefone: "38 99908-4728", diretor: "-" },
+            { organismo: "Comunidade Santa Bárbara (Conselho)", nome: "Adriana", telefone: "38 99748-6801", diretor: "-" },
+            { organismo: "Comunidade Bico da Pedra (Conselho)", nome: "Edilene", telefone: "38 9891-1058", diretor: "-" },
+            { organismo: "Comunidade Salto (Conselho)", nome: "Ângela", telefone: "38 99839-9224", diretor: "-" },
+            { organismo: "Comunidade Palmito (Conselho)", nome: "Socorro", telefone: "38 99966-6032", diretor: "-" }
         ];
 
         function getCategoryColor(org) {
-            const nome = org.toLowerCase();
-            if (nome.includes('liturgia') || nome.includes('leitores') || nome.includes('música') || nome.includes('coroinhas')) return 'var(--cor-liturgia)';
-            if (nome.includes('catequese') || nome.includes('crisma') || nome.includes('batismo')) return 'var(--cor-catequese)';
-            if (nome.includes('comunidade') || nome.includes('conselho')) return 'var(--cor-conselho)';
-            if (nome.includes('eac') || nome.includes('mac') || nome.includes('r.c.c')) return 'var(--cor-movimento)';
-            return 'var(--cor-default)';
+            const n = org.toLowerCase();
+            if (n.includes('liturgia') || n.includes('leitores') || n.includes('música') || n.includes('coroinhas') || n.includes('acólitos') || n.includes('missas') || n.includes('ornamentação')) return 'var(--cor-liturgia)';
+            if (n.includes('catequese') || n.includes('crisma') || n.includes('batismo') || n.includes('bíblicos') || n.includes('perseverança')) return 'var(--cor-catequese)';
+            if (n.includes('comunidade') || n.includes('conselho')) return 'var(--cor-conselho)';
+            if (n.includes('familiar') || n.includes('noivos') || n.includes('ecc') || n.includes('eac') || n.includes('mac') || n.includes('enfic') || n.includes('consensuais')) return 'var(--cor-familia)';
+            return 'var(--cor-espiritualidade)';
         }
 
         function highlight(text, query) {
             if (!query) return text;
-            const normalized = text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
             const regex = new RegExp(`(${query})`, "gi");
             return text.replace(regex, `<span class="highlight">$1</span>`);
         }
 
         function copyToClipboard(text, btn) {
-            navigator.clipboard.writeText(text).then(() => {
-                const originalHtml = btn.innerHTML;
-                btn.classList.add('success');
-                btn.innerHTML = '<i class="fas fa-check"></i>';
-                setTimeout(() => {
-                    btn.classList.remove('success');
-                    btn.innerHTML = originalHtml;
-                }, 2000);
-            });
+            navigator.clipboard.writeText(text);
+            const icon = btn.innerHTML;
+            btn.classList.add('success');
+            btn.innerHTML = '<i class="fas fa-check"></i>';
+            setTimeout(() => { btn.classList.remove('success'); btn.innerHTML = icon; }, 2000);
         }
 
         function render() {
@@ -212,19 +192,19 @@
             container.innerHTML = '';
 
             pastorais.filter(item => {
-                const searchArea = `${item.organismo} ${item.nome} ${item.diretor}`.toLowerCase();
-                return searchArea.includes(query);
+                const searchStr = `${item.organismo} ${item.nome} ${item.diretor}`.toLowerCase();
+                return searchStr.includes(query);
             }).forEach(item => {
                 const color = getCategoryColor(item.organismo);
                 const card = document.createElement('div');
                 card.className = 'card';
                 card.style.setProperty('--cor-borda', color);
 
-                const tels = item.telefone.split(' / ').map(t => {
+                const telsHtml = item.telefone.split(' / ').map(t => {
                     const clean = t.replace(/\D/g, '');
                     return `
                         <div class="contact-group">
-                            <span class="tel-text">📱 ${t}</span>
+                            <span style="font-weight:600; font-size:0.9rem">📱 ${t}</span>
                             <div class="action-buttons">
                                 <a href="https://wa.me/55${clean}" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i></a>
                                 <a href="tel:+55${clean}" class="btn btn-call"><i class="fas fa-phone"></i></a>
@@ -234,13 +214,10 @@
                 }).join('');
 
                 card.innerHTML = `
-                    <span class="tag" style="color: ${color}">Paróquia São Judas</span>
-                    <h2 style="color: ${color}">${highlight(item.organismo, query)}</h2>
-                    <p style="margin: 5px 0"><i class="fas fa-user-circle"></i> <strong>Coord:</strong> ${highlight(item.nome, query)}</p>
-                    ${tels}
-                    <p style="margin-top: 15px; font-size: 0.8rem; color: #777;">
-                        <i class="fas fa-cross"></i> Dir: ${highlight(item.diretor, query)}
-                    </p>
+                    <h2 style="color:${color}; font-size: 1.2rem; margin-bottom: 8px;">${highlight(item.organismo, query)}</h2>
+                    <p><strong>👤 Coord:</strong> ${highlight(item.nome, query)}</p>
+                    ${telsHtml}
+                    <div class="diretor-info"><i class="fas fa-cross"></i> Dir: ${highlight(item.diretor, query)}</div>
                 `;
                 container.appendChild(card);
             });
