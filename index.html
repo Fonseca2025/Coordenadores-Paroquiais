@@ -149,7 +149,7 @@
 
     <main>
         <div class="search-container">
-            <input type="text" id="searchInput" placeholder="🔍 Digite o nome do Organismo ou do Coordenador...">
+            <input type="text" id="searchInput" placeholder="🔍 Digite o nome do Organismo, Comunidade ou Coordenador...">
         </div>
 
         <div id="results">
@@ -162,9 +162,9 @@
     </footer>
 
     <script>
-        // Banco de Dados Extraído dos Documentos PDF
-        // Você pode adicionar ou alterar dados facilmente nesta lista
+        // Banco de Dados Extraído dos Documentos PDF e Imagens
         const pastorais =[
+            // Pastorais e Movimentos
             { organismo: "Pastoral da Acolhida", nome: "Ionise", telefone: "9.8807-1653", diretor: "Pe. Marco Simões" },
             { organismo: "Grupo de Leitores", nome: "Alex / Maris", telefone: "9.9192-9243 / 9.9141-9993", diretor: "Pe. Marco Simões" },
             { organismo: "Ministério de Coroinhas", nome: "Nilzete / Kátia", telefone: "9.9122-8414 / 9.9212-1213", diretor: "Pe. Marco Simões" },
@@ -196,7 +196,17 @@
             { organismo: "Legião de Maria", nome: "Lucinha", telefone: "9.8858-5926", diretor: "Diácono Alvino" },
             { organismo: "Mulheres que Oram", nome: "Marília", telefone: "9.9172-0634", diretor: "Diácono Alvino" },
             { organismo: "Pastoral Carcerária", nome: "Dílson", telefone: "9.9800-8309 / 3.214-1084", diretor: "Diácono Alvino" },
-            { organismo: "Apostolado da Sagrada Face", nome: "Zina", telefone: "3.216-1432 / 9.9212-2610", diretor: "Diácono Alvino" }
+            { organismo: "Apostolado da Sagrada Face", nome: "Zina", telefone: "3.216-1432 / 9.9212-2610", diretor: "Diácono Alvino" },
+            
+            // Conselheiros das Comunidades
+            { organismo: "Comunidade Cristo Rei (Conselho)", nome: "Cleide", telefone: "9.9103-1180", diretor: "-" },
+            { organismo: "Comunidade Santo Inácio (Conselho)", nome: "Fábio e Vera", telefone: "9.9987-6852 / 9.9961-7629", diretor: "-" },
+            { organismo: "Comunidade N. Sra. da Boa Viagem (Conselho)", nome: "André", telefone: "9.9923-6172", diretor: "-" },
+            { organismo: "Comunidade São Judas Tadeu (Conselho)", nome: "Raquel", telefone: "9.9908-4728", diretor: "-" },
+            { organismo: "Comunidade Santa Bárbara (Conselho)", nome: "Adriana", telefone: "9.9748-6801", diretor: "-" },
+            { organismo: "Comunidade Bico da Pedra (Conselho)", nome: "Edilene", telefone: "9.9891-1058", diretor: "-" },
+            { organismo: "Comunidade Salto (Conselho)", nome: "Ângela", telefone: "9.9839-9224", diretor: "-" },
+            { organismo: "Comunidade Palmito (Conselho)", nome: "Socorro", telefone: "9.9966-6032", diretor: "-" }
         ];
 
         const searchInput = document.getElementById('searchInput');
@@ -226,7 +236,7 @@
                 card.className = 'card';
                 card.innerHTML = `
                     <h2>🌿 ${item.organismo}</h2>
-                    <p><span class="icon">👤</span> <strong>Coord.:</strong> ${item.nome}</p>
+                    <p><span class="icon">👤</span> <strong>Coord/Cons.:</strong> ${item.nome}</p>
                     <p><span class="icon">📱</span> <strong>Telefone:</strong> <a href="tel:${item.telefone.split(' / ')[0].replace(/\./g, '').replace(/-/g, '')}" style="color:var(--verde-padroeiro); text-decoration:none;">${item.telefone}</a></p>
                     <p><span class="icon">⛪</span> <strong>Dir. Espiritual:</strong> ${item.diretor}</p>
                 `;
