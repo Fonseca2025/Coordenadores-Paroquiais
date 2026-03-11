@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contatos Paróquia São Judas Tadeu</title>
+    <title>Coordenadores Pastorais e Movimentos - Matriz São Judas Tadeu</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -31,6 +31,8 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
+        header h1 { font-size: 1.8rem; max-width: 800px; margin: 0 auto; line-height: 1.2; }
+
         main { 
             max-width: 1100px; 
             margin: 0 auto; 
@@ -45,7 +47,7 @@
             padding: 1.5rem;
             margin: -2rem auto 2rem auto;
             display: flex;
-            flex-direction: column; /* Empilha no celular */
+            flex-direction: column; 
             gap: 1.5rem;
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             position: relative;
@@ -105,7 +107,6 @@
             margin-top: 12px; 
         }
 
-        /* Botões Adaptáveis */
         .action-buttons { 
             display: grid; 
             grid-template-columns: repeat(3, 1fr); 
@@ -148,15 +149,15 @@
 <body>
 
     <header>
-        <h1 id="top">Matriz São Judas Tadeu</h1>
-        <p><i class="fas fa-church"></i> Montes Claros - MG</p>
+        <h1>Coordenadores Pastorais e Movimentos da Matriz São Judas Tadeu</h1>
+        <p style="margin-top: 10px;"><i class="fas fa-calendar-alt"></i> Gestão 2026</p>
     </header>
 
     <main>
         <div class="secretaria-card">
             <div>
-                <h2 style="color: #D32F2F; margin-bottom: 5px;"><i class="fas fa-phone-alt"></i> Secretaria Paroquial</h2>
-                <p>Informações, Agendamentos e Dúvidas</p>
+                <h2 style="color: #D32F2F; margin-bottom: 5px;"><i class="fas fa-headset"></i> Secretaria Paroquial</h2>
+                <p>Atendimento de Segunda a Sexta</p>
             </div>
             <div class="action-buttons">
                 <a href="https://wa.me/5538992410006" class="btn btn-whatsapp" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
@@ -166,14 +167,14 @@
         </div>
 
         <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Busque por pastoral, nome ou diretor...">
+            <input type="text" id="searchInput" placeholder="🔍 Pesquisar por nome ou pastoral...">
         </div>
 
         <div id="results"></div>
     </main>
 
     <footer>
-        <p>Pastoral de Conjunto - 2026</p>
+        <p>Desenvolvido para a comunidade paroquial</p>
     </footer>
 
     <script>
@@ -243,14 +244,12 @@
             
             let finalHtml = "";
             let cursor = 0;
-            
             matches.forEach(match => {
                 const start = match.index;
                 const end = start + match[0].length;
                 finalHtml += text.substring(cursor, start) + `<span class="highlight">${text.substring(start, end)}</span>`;
                 cursor = end;
             });
-            
             finalHtml += text.substring(cursor);
             return finalHtml || text;
         }
