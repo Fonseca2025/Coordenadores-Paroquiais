@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coordenação Paroquial - São Judas Tadeu</title>
+    <style>
+        /* Paleta de Cores São Judas Tadeu: Verde escuro, Dourado/Amarelo e Branco */
+        :root {
+            --verde-padroeiro: #1B5E20; /* Verde escuro do manto */
+            --verde-claro: #4CAF50;
+            --dourado: #FFC107; /* Amarelo/Dourado da medalha */
+            --fundo: #F4F9F4;
+            --texto-escuro: #333333;
+            --branco: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--fundo);
+            color: var(--texto-escuro);
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: var(--verde-padroeiro);
+            color: var(--branco);
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: var(--dourado);
+            font-weight: 500;
+        }
+
+        /* Área Principal */
+        main {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* Barra de Busca */
+        .search-container {
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 10px;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.1rem;
+            border: 2px solid var(--verde-claro);
+            border-radius: 8px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        #searchInput:focus {
+            border-color: var(--verde-padroeiro);
+            box-shadow: 0 0 8px rgba(27, 94, 32, 0.3);
+        }
+
+        /* Grid de Resultados */
+        #results {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Cartão de Informação */
+        .card {
+            background: var(--branco);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--verde-padroeiro);
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+
+        .card h2 {
+            color: var(--verde-padroeiro);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+
+        .card p {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .card p strong {
+            margin-right: 0.5rem;
+            color: #555;
+        }
+
+        .icon {
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+
+        /* Mensagem sem resultados */
+        .no-results {
+            text-align: center;
+            color: #777;
+            font-size: 1.2rem;
+            grid-column: 1 / -1;
+            padding: 2rem;
+        }
+
+        /* Rodapé */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #777;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Matriz São Judas Tadeu</h1>
+        <p>Coordenadores Pastorais e Movimentos</p>
+    </header>
+
+    <main>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="🔍 Digite o nome do Organismo ou do Coordenador...">
+        </div>
+
+        <div id="results">
+            <!-- Os resultados aparecerão aqui -->
+        </div>
+    </main>
+
+    <footer>
+        <p>Devemos buscar a Pastoral de Conjunto!</p>
+    </footer>
+
+    <script>
+        // Banco de Dados Extraído dos Documentos PDF
+        // Você pode adicionar ou alterar dados facilmente nesta lista
+        const pastorais =[
+            { organismo: "Pastoral da Acolhida", nome: "Ionise", telefone: "9.8807-1653", diretor: "Pe. Marco Simões" },
+            { organismo: "Grupo de Leitores", nome: "Alex / Maris", telefone: "9.9192-9243 / 9.9141-9993", diretor: "Pe. Marco Simões" },
+            { organismo: "Ministério de Coroinhas", nome: "Nilzete / Kátia", telefone: "9.9122-8414 / 9.9212-1213", diretor: "Pe. Marco Simões" },
+            { organismo: "Ministério de Acólitos", nome: "Edmárcia", telefone: "9.9872-8347", diretor: "Pe. Marco Simões" },
+            { organismo: "Ministérios de Música", nome: "Jeanine", telefone: "9.8847-2393", diretor: "Pe. Marco Simões" },
+            { organismo: "MECEs", nome: "Yata / Suely", telefone: "9.9989-1979 / 9.9210-5556", diretor: "Pe. Marco Simões" },
+            { organismo: "Marcação de Missas", nome: "Edite", telefone: "9.9217-1120", diretor: "Pe. Marco Simões" },
+            { organismo: "Ornamentação", nome: "Terezinha", telefone: "9.9188-9211", diretor: "Pe. Marco Simões" },
+            { organismo: "Liturgia Mirim", nome: "Sandra", telefone: "9.8866-9139", diretor: "Pe. Marco Simões" },
+            { organismo: "PASCOM", nome: "Cris / Claudio", telefone: "9.6828-7007 / 9.9160-0007", diretor: "Pe. Marco Simões" },
+            { organismo: "Transmissão", nome: "Ávilo", telefone: "9.9112-6733", diretor: "Pe. Marco Simões" },
+            { organismo: "Núcleo Catequético", nome: "Josy", telefone: "9.9890-4207", diretor: "Pe. Mazinho" },
+            { organismo: "Catequese da Crisma", nome: "Júnia", telefone: "9.9940-6139", diretor: "Pe. Mazinho" },
+            { organismo: "Perseverança", nome: "Sandra", telefone: "9.8866-9139", diretor: "Pe. Mazinho" },
+            { organismo: "R.C.C.", nome: "Juliana", telefone: "9.8815-8348", diretor: "Pe. Mazinho" },
+            { organismo: "Círculos Bíblicos", nome: "Cleide", telefone: "9.9103-1180", diretor: "Pe. Mazinho" },
+            { organismo: "Catequese com Adultos", nome: "Ismael e Zizi", telefone: "9.9953-4278 / 9.9931-4326", diretor: "Pe. Mazinho e Diácono Paulo Antônio" },
+            { organismo: "Batismo", nome: "Alex e Raissa", telefone: "9.9889-6867 / 9.9963-2130", diretor: "Pe. Mazinho e Diácono Paulo Antônio" },
+            { organismo: "Pastoral Familiar", nome: "Aline e Luciano", telefone: "9.9740-4888 / 9.9997-9403", diretor: "Pe. Marco Simões" },
+            { organismo: "Casos Consensuais", nome: "Gelza e Rubens", telefone: "9.8421-9661 / 9.9929-0464", diretor: "Pe. Marco Simões" },
+            { organismo: "Preparação Noivos", nome: "Terezinha e Gilberto", telefone: "9.9156-7579 / 9.9848-0513", diretor: "Pe. Marco Simões" },
+            { organismo: "ECC", nome: "Hugo e Paula Jane", telefone: "9.9934-9727 / 9.9819-2981", diretor: "Pe. Marco Simões" },
+            { organismo: "ENFIC", nome: "Maicon e Adriana", telefone: "9.9811-5499 / 9.9163-3049", diretor: "Pe. Marco Simões" },
+            { organismo: "EAC", nome: "Joenilton e Érica", telefone: "98806-9824 / 98848-4384", diretor: "Pe. Marco Simões" },
+            { organismo: "MAC", nome: "Felipe e Alessandra", telefone: "98403-4054 / 98415-7667", diretor: "Pe. Marco Simões" },
+            { organismo: "Pastoral do Dizimo", nome: "Ruy e Cláudia", telefone: "9.9952-1530 / 9.9999-6910", diretor: "Diácono Paulo Nascimento" },
+            { organismo: "Apostolado Oração", nome: "Gelza e Rubens", telefone: "9.8421-9661 / 9.9929-0464", diretor: "Diácono Paulo Nascimento" },
+            { organismo: "Mãe Rainha", nome: "Nice", telefone: "9.8409-4660", diretor: "Diácono Alvino" },
+            { organismo: "Legião de Maria", nome: "Lucinha", telefone: "9.8858-5926", diretor: "Diácono Alvino" },
+            { organismo: "Mulheres que Oram", nome: "Marília", telefone: "9.9172-0634", diretor: "Diácono Alvino" },
+            { organismo: "Pastoral Carcerária", nome: "Dílson", telefone: "9.9800-8309 / 3.214-1084", diretor: "Diácono Alvino" },
+            { organismo: "Apostolado da Sagrada Face", nome: "Zina", telefone: "3.216-1432 / 9.9212-2610", diretor: "Diácono Alvino" }
+        ];
+
+        const searchInput = document.getElementById('searchInput');
+        const resultsContainer = document.getElementById('results');
+
+        // Função para renderizar os dados na tela
+        function displayResults(query) {
+            resultsContainer.innerHTML = ''; // Limpa resultados anteriores
+            
+            const lowerQuery = query.toLowerCase();
+            
+            // Filtra o array de pastorais (busca no organismo ou no nome do coordenador)
+            const filteredData = pastorais.filter(item => 
+                item.organismo.toLowerCase().includes(lowerQuery) || 
+                item.nome.toLowerCase().includes(lowerQuery)
+            );
+
+            // Mensagem se não encontrar nada
+            if (filteredData.length === 0) {
+                resultsContainer.innerHTML = '<div class="no-results">Nenhum resultado encontrado. Tente outra palavra.</div>';
+                return;
+            }
+
+            // Cria os cartões para os resultados encontrados
+            filteredData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <h2>🌿 ${item.organismo}</h2>
+                    <p><span class="icon">👤</span> <strong>Coord.:</strong> ${item.nome}</p>
+                    <p><span class="icon">📱</span> <strong>Telefone:</strong> <a href="tel:${item.telefone.split(' / ')[0].replace(/\./g, '').replace(/-/g, '')}" style="color:var(--verde-padroeiro); text-decoration:none;">${item.telefone}</a></p>
+                    <p><span class="icon">⛪</span> <strong>Dir. Espiritual:</strong> ${item.diretor}</p>
+                `;
+                resultsContainer.appendChild(card);
+            });
+        }
+
+        // Event Listener para a barra de pesquisa (atualiza enquanto digita)
+        searchInput.addEventListener('input', (e) => {
+            displayResults(e.target.value);
+        });
+
+        // Mostra todos os resultados ao abrir a página
+        displayResults('');
+    </script>
+</body>
+</html>
