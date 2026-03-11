@@ -26,12 +26,13 @@
         body {
             background-color: var(--fundo);
             color: var(--texto-escuro);
+            line-height: 1.6;
         }
 
         header {
             background-color: var(--verde-padroeiro);
             color: var(--branco);
-            padding: 2rem 1rem;
+            padding: 2.5rem 1rem;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
@@ -39,161 +40,139 @@
         header h1 {
             font-size: 1.8rem;
             margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         header p {
             color: var(--dourado);
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 1.1rem;
         }
 
         main {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto 2rem auto;
             padding: 0 1rem;
         }
 
-        /* Barra de Busca Fixa no Topo */
         .search-container {
             position: sticky;
             top: 0;
             background-color: var(--fundo);
             padding: 1.5rem 0;
             z-index: 100;
-            border-bottom: 1px solid #e0e0e0;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         #searchInput {
             width: 100%;
-            padding: 1rem;
+            padding: 1.2rem;
             font-size: 1.1rem;
             border: 2px solid var(--verde-claro);
-            border-radius: 8px;
+            border-radius: 12px;
             outline: none;
             transition: 0.3s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
 
         #searchInput:focus {
             border-color: var(--verde-padroeiro);
-            box-shadow: 0 0 8px rgba(27, 94, 32, 0.3);
+            box-shadow: 0 0 12px rgba(27, 94, 32, 0.4);
         }
 
         #results {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 1.5rem;
         }
 
         .card {
             background: var(--branco);
-            border-radius: 8px;
+            border-radius: 12px;
             padding: 1.5rem;
             box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-            border-top: 5px solid var(--verde-padroeiro);
-            transition: transform 0.2s;
+            border-top: 6px solid var(--verde-padroeiro);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.12);
         }
 
         .card h2 {
             color: var(--verde-padroeiro);
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             margin-bottom: 1rem;
-            border-bottom: 1px solid #eee;
+            border-bottom: 2px solid #f0f0f0;
             padding-bottom: 0.5rem;
         }
 
-        .card p {
+        .info-row {
             margin-bottom: 0.8rem;
             font-size: 0.95rem;
             display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .card p strong {
-            margin-right: 0.5rem;
-            color: #555;
+            align-items: flex-start;
         }
 
         .icon {
-            margin-right: 8px;
-            font-size: 1.2rem;
+            margin-right: 10px;
+            min-width: 20px;
+            text-align: center;
         }
 
-        /* Estilização dos Links de Contato */
         .contact-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-bottom: 15px;
-            background: #f9f9f9;
-            padding: 10px;
+            background: #f8fcf8;
+            padding: 12px;
             border-radius: 8px;
-            border: 1px solid #eee;
+            border: 1px solid #e8eee8;
+            margin: 10px 0;
         }
 
         .tel-display {
-            font-weight: 600;
+            font-weight: 700;
             color: var(--verde-padroeiro);
-            font-size: 1rem;
-            margin-bottom: 2px;
+            margin-bottom: 8px;
+            display: block;
         }
 
         .action-buttons {
             display: flex;
             gap: 8px;
-            flex-wrap: wrap;
         }
 
         .btn-contact {
             text-decoration: none;
-            padding: 6px 12px;
+            padding: 8px 12px;
             border-radius: 6px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: bold;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            transition: 0.2s;
             color: white;
             flex: 1;
-            min-width: 100px;
+            transition: filter 0.2s;
         }
 
-        .btn-whatsapp {
-            background-color: var(--verde-whatsapp);
-        }
-
-        .btn-whatsapp:hover {
-            background-color: #1DA851;
-        }
-
-        .btn-call {
-            background-color: var(--azul-ligar);
-        }
-
-        .btn-call:hover {
-            background-color: #0056b3;
-        }
-
-        .no-results {
-            text-align: center;
-            color: #777;
-            font-size: 1.2rem;
-            grid-column: 1 / -1;
-            padding: 2rem;
-        }
+        .btn-contact:active { transform: scale(0.98); }
+        .btn-whatsapp { background-color: var(--verde-whatsapp); }
+        .btn-call { background-color: var(--azul-ligar); }
+        .btn-contact:hover { filter: brightness(0.9); }
 
         footer {
             text-align: center;
-            padding: 2rem;
-            color: #777;
-            font-size: 0.9rem;
+            padding: 3rem 1rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        @media (max-width: 480px) {
+            #results { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -201,25 +180,28 @@
 
     <header>
         <h1>Matriz São Judas Tadeu</h1>
-        <p>Coordenadores Pastorais e Movimentos</p>
+        <p>Guia de Pastorais e Movimentos</p>
     </header>
 
     <main>
         <div class="search-container">
-            <input type="text" id="searchInput" placeholder="🔍 Digite o Organismo, Coordenador ou Diretor...">
+            <input type="text" id="searchInput" placeholder="🔍 Procure por pastoral, nome ou padre...">
         </div>
 
-        <div id="results">
-            <!-- Os resultados aparecerão aqui -->
-        </div>
+        <div id="results"></div>
     </main>
 
     <footer>
-        <p>Devemos buscar a Pastoral de Conjunto!</p>
+        <p>"Onde dois ou três estiverem reunidos em meu nome, eu estou ali, no meio deles." (Mt 18,20)</p>
+        <p style="margin-top: 10px; font-size: 0.8rem;">Pastoral de Conjunto - 2026</p>
     </footer>
 
     <script>
-        const pastorais =[
+        const pastorais = [
+            // NOVA INCLUSÃO
+            { organismo: "Pastoral Litúrgica", nome: "Sarah", telefone: "38 99146-7612", diretor: "Pe. Marco Simões" },
+            
+            // DADOS EXISTENTES
             { organismo: "Pastoral da Acolhida", nome: "Ionise", telefone: "38 98807-1653", diretor: "Pe. Marco Simões" },
             { organismo: "Grupo de Leitores", nome: "Alex / Maris", telefone: "38 99192-9243 / 38 99141-9993", diretor: "Pe. Marco Simões" },
             { organismo: "Ministério de Coroinhas", nome: "Nilzete / Kátia", telefone: "38 99122-8414 / 38 99212-1213", diretor: "Pe. Marco Simões" },
@@ -239,28 +221,12 @@
             { organismo: "Catequese com Adultos", nome: "Ismael e Zizi", telefone: "38 99953-4278 / 38 99931-4326", diretor: "Pe. Mazinho e Diácono Paulo Antônio" },
             { organismo: "Batismo", nome: "Alex e Raissa", telefone: "38 99889-6867 / 38 99963-2130", diretor: "Pe. Mazinho e Diácono Paulo Antônio" },
             { organismo: "Pastoral Familiar", nome: "Aline e Luciano", telefone: "38 99740-4888 / 38 99997-9403", diretor: "Pe. Marco Simões" },
-            { organismo: "Casos Consensuais", nome: "Gelza e Rubens", telefone: "38 98421-9661 / 38 99929-0464", diretor: "Pe. Marco Simões" },
-            { organismo: "Preparação Noivos", nome: "Terezinha e Gilberto", telefone: "38 99156-7579 / 38 99848-0513", diretor: "Pe. Marco Simões" },
-            { organismo: "ECC", nome: "Hugo e Paula Jane", telefone: "38 99934-9727 / 38 99819-2981", diretor: "Pe. Marco Simões" },
-            { organismo: "ENFIC", nome: "Maicon e Adriana", telefone: "38 99811-5499 / 38 99163-3049", diretor: "Pe. Marco Simões" },
-            { organismo: "EAC", nome: "Joenilton e Érica", telefone: "38 98806-9824 / 38 98848-4384", diretor: "Pe. Marco Simões" },
-            { organismo: "MAC", nome: "Felipe e Alessandra", telefone: "38 98403-4054 / 38 98415-7667", diretor: "Pe. Marco Simões" },
             { organismo: "Pastoral do Dizimo", nome: "Ruy e Cláudia", telefone: "38 99952-1530 / 38 99999-6910", diretor: "Diácono Paulo Nascimento" },
             { organismo: "Apostolado Oração", nome: "Gelza e Rubens", telefone: "38 98421-9661 / 38 99929-0464", diretor: "Diácono Paulo Nascimento" },
             { organismo: "Mãe Rainha", nome: "Nice", telefone: "38 98409-4660", diretor: "Diácono Alvino" },
             { organismo: "Legião de Maria", nome: "Lucinha", telefone: "38 98858-5926", diretor: "Diácono Alvino" },
-            { organismo: "Mulheres que Oram", nome: "Marília", telefone: "38 99172-0634", diretor: "Diácono Alvino" },
-            { organismo: "Pastoral Carcerária", nome: "Dílson", telefone: "38 99800-8309 / 38 3214-1084", diretor: "Diácono Alvino" },
-            { organismo: "Apostolado da Sagrada Face", nome: "Zina", telefone: "38 3216-1432 / 38 99212-2610", diretor: "Diácono Alvino" },
-            { organismo: "Comunidade Cristo Rei (Conselho)", nome: "Cleide", telefone: "38 99103-1180", diretor: "-" },
-            { organismo: "Comunidade Santo Inácio (Conselho)", nome: "Fábio e Vera", telefone: "38 99987-6852 / 38 99961-7629", diretor: "-" },
-            { organismo: "Comunidade N. Sra. da Boa Viagem (Conselho)", nome: "André", telefone: "38 9923-6172", diretor: "-" },
-            { organismo: "Comunidade São Judas Tadeu (Conselho)", nome: "Raquel", telefone: "38 99908-4728", diretor: "-" },
-            { organismo: "Comunidade Santa Bárbara (Conselho)", nome: "Adriana", telefone: "38 99748-6801", diretor: "-" },
-            { organismo: "Comunidade Bico da Pedra (Conselho)", nome: "Edilene", telefone: "38 9891-1058", diretor: "-" },
-            { organismo: "Comunidade Salto (Conselho)", nome: "Ângela", telefone: "38 99839-9224", diretor: "-" },
-            { organismo: "Comunidade Palmito (Conselho)", nome: "Socorro", telefone: "38 99966-6032", diretor: "-" }
-        ];
+            { organismo: "Comunidade São Judas Tadeu (Conselho)", nome: "Raquel", telefone: "38 99908-4728", diretor: "Pe. Marco Simões" }
+        ].sort((a, b) => a.organismo.localeCompare(b.organismo)); // Ordenação Alfabética
 
         const searchInput = document.getElementById('searchInput');
         const resultsContainer = document.getElementById('results');
@@ -270,69 +236,58 @@
         }
 
         function formatarTelefones(telefoneStr) {
-            const telefones = telefoneStr.split(' / ');
-            
-            return telefones.map(tel => {
-                let numLimpo = tel.replace(/\D/g, ''); 
-                
-                // Se o número não começar com 55, adiciona o código do Brasil
-                if (!numLimpo.startsWith('55')) {
-                    numLimpo = '55' + numLimpo;
-                }
-                
-                const linkZap = `https://wa.me/${numLimpo}?text=Olá`;
-                const linkCall = `tel:+${numLimpo}`;
+            return telefoneStr.split(' / ').map(tel => {
+                const numLimpo = tel.replace(/\D/g, '');
+                const ddi = numLimpo.length <= 11 ? '55' : '';
+                const linkZap = `https://wa.me/${ddi}${numLimpo}`;
+                const linkCall = `tel:+${ddi}${numLimpo}`;
                 
                 return `
                 <div class="contact-group">
-                    <div class="tel-display">📱 ${tel}</div>
+                    <span class="tel-display">📞 ${tel}</span>
                     <div class="action-buttons">
                         <a href="${linkZap}" target="_blank" class="btn-contact btn-whatsapp">WhatsApp</a>
-                        <a href="${linkCall}" class="btn-contact btn-call">Ligar Agora</a>
+                        <a href="${linkCall}" class="btn-contact btn-call">Ligar</a>
                     </div>
                 </div>`;
-            } ).join('');
+            }).join('');
         }
 
         function displayResults(query) {
             resultsContainer.innerHTML = ''; 
-            const termoBusca = removerAcentos(query);
+            const termo = removerAcentos(query);
             
-            const filteredData = pastorais.filter(item => 
-                removerAcentos(item.organismo).includes(termoBusca) || 
-                removerAcentos(item.nome).includes(termoBusca) ||
-                removerAcentos(item.diretor).includes(termoBusca)
+            const filtered = pastorais.filter(item => 
+                removerAcentos(item.organismo).includes(termo) || 
+                removerAcentos(item.nome).includes(termo) ||
+                removerAcentos(item.diretor).includes(termo)
             );
 
-            if (filteredData.length === 0) {
-                resultsContainer.innerHTML = '<div class="no-results">Nenhum resultado encontrado. Tente outra palavra.</div>';
+            if (filtered.length === 0) {
+                resultsContainer.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 2rem;">Ops! Não encontramos nada com esse nome.</div>';
                 return;
             }
 
-            filteredData.forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'card';
-                
-                // Lógica de rótulo: "Conselheiro" para comunidades, "Coordenação" para os demais.
-                const label = item.organismo.toLowerCase().includes('comunidade') ? 'Conselheiro' : 'Coordenação';
-                
-                card.innerHTML = `
-                    <h2>🌿 ${item.organismo}</h2>
-                    <p><span class="icon">👤</span> <strong>${label}:</strong> ${item.nome}</p>
-                    <p style="margin-bottom: 0.5rem;"><span class="icon">📞</span> <strong>Contatos:</strong></p>
+            filtered.forEach(item => {
+                const label = item.organismo.includes('Comunidade') ? 'Conselheiro(a)' : 'Coordenação';
+                const div = document.createElement('div');
+                div.className = 'card';
+                div.innerHTML = `
                     <div>
+                        <h2>🌿 ${item.organismo}</h2>
+                        <div class="info-row"><span class="icon">👤</span> <strong>${label}:</strong> ${item.nome}</div>
+                        <div class="info-row"><span class="icon">📱</span> <strong>Contatos:</strong></div>
                         ${formatarTelefones(item.telefone)}
                     </div>
-                    <p><span class="icon">⛪</span> <strong>Dir. Espiritual:</strong> ${item.diretor}</p>
+                    <div class="info-row" style="margin-top:15px; border-top: 1px solid #eee; pt: 10px;">
+                        <span class="icon">⛪</span> <small><strong>Dir. Espiritual:</strong> ${item.diretor}</small>
+                    </div>
                 `;
-                resultsContainer.appendChild(card);
+                resultsContainer.appendChild(div);
             });
         }
 
-        searchInput.addEventListener('input', (e) => {
-            displayResults(e.target.value);
-        });
-
+        searchInput.addEventListener('input', (e) => displayResults(e.target.value));
         displayResults('');
     </script>
 </body>
