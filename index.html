@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coordenação Paroquial - São Judas Tadeu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --verde-padroeiro: #1B5E20; 
@@ -14,72 +15,55 @@
             --fundo: #F4F9F4;
             --texto-escuro: #333333;
             --branco: #FFFFFF;
+            --secretaria: #E8F5E9;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
 
-        body {
-            background-color: var(--fundo);
-            color: var(--texto-escuro);
-            line-height: 1.6;
-        }
+        body { background-color: var(--fundo); color: var(--texto-escuro); line-height: 1.5; }
 
         header {
             background-color: var(--verde-padroeiro);
             color: var(--branco);
-            padding: 2.5rem 1rem;
+            padding: 2rem 1rem;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        header h1 {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        header p {
-            color: var(--dourado);
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
-        main {
-            max-width: 900px;
-            margin: 0 auto 2rem auto;
-            padding: 0 1rem;
-        }
+        main { max-width: 900px; margin: 0 auto 2rem auto; padding: 0 1rem; }
 
         .search-container {
             position: sticky;
             top: 0;
             background-color: var(--fundo);
             padding: 1.5rem 0;
-            z-index: 100;
-            margin-bottom: 1rem;
+            z-index: 1000;
         }
 
         #searchInput {
             width: 100%;
-            padding: 1.2rem;
+            padding: 1rem 1.5rem;
             font-size: 1.1rem;
             border: 2px solid var(--verde-claro);
-            border-radius: 12px;
+            border-radius: 50px;
             outline: none;
-            transition: 0.3s;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        #searchInput:focus {
-            border-color: var(--verde-padroeiro);
-            box-shadow: 0 0 12px rgba(27, 94, 32, 0.4);
+        /* Card da Secretaria - Estilo Diferenciado */
+        .secretaria-card {
+            background: var(--secretaria);
+            border: 2px dashed var(--verde-padroeiro);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
         }
+
+        .highlight { background-color: #FFF176; color: #000; padding: 0 2px; border-radius: 2px; }
 
         #results {
             display: grid;
@@ -91,88 +75,53 @@
             background: var(--branco);
             border-radius: 12px;
             padding: 1.5rem;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
             border-top: 6px solid var(--verde-padroeiro);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            transition: transform 0.2s;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.12);
-        }
+        .card:hover { transform: translateY(-3px); }
 
-        .card h2 {
-            color: var(--verde-padroeiro);
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-            border-bottom: 2px solid #f0f0f0;
-            padding-bottom: 0.5rem;
-        }
-
-        .info-row {
-            margin-bottom: 0.8rem;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: flex-start;
-        }
-
-        .icon {
-            margin-right: 10px;
-            min-width: 20px;
-            text-align: center;
-        }
+        .card h2 { color: var(--verde-padroeiro); font-size: 1.2rem; margin-bottom: 1rem; }
 
         .contact-group {
-            background: #f8fcf8;
-            padding: 12px;
+            background: #f9f9f9;
+            padding: 10px;
             border-radius: 8px;
-            border: 1px solid #e8eee8;
             margin: 10px 0;
-        }
-
-        .tel-display {
-            font-weight: 700;
-            color: var(--verde-padroeiro);
-            margin-bottom: 8px;
-            display: block;
         }
 
         .action-buttons {
             display: flex;
             gap: 8px;
+            margin-top: 8px;
         }
 
-        .btn-contact {
-            text-decoration: none;
-            padding: 8px 12px;
+        .btn {
+            border: none;
             border-radius: 6px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            display: inline-flex;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            flex: 1;
+            display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            flex: 1;
-            transition: filter 0.2s;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: opacity 0.2s;
         }
 
-        .btn-contact:active { transform: scale(0.98); }
+        .btn:hover { opacity: 0.85; }
         .btn-whatsapp { background-color: var(--verde-whatsapp); }
         .btn-call { background-color: var(--azul-ligar); }
-        .btn-contact:hover { filter: brightness(0.9); }
+        .btn-copy { background-color: #607D8B; }
 
-        footer {
-            text-align: center;
-            padding: 3rem 1rem;
-            color: #666;
-            font-style: italic;
-        }
+        footer { text-align: center; padding: 2rem; color: #777; font-size: 0.9rem; }
 
-        @media (max-width: 480px) {
-            #results { grid-template-columns: 1fr; }
+        @media (max-width: 600px) {
+            .action-buttons { flex-direction: row; }
+            .secretaria-card { text-align: center; justify-content: center; }
         }
     </style>
 </head>
@@ -180,28 +129,36 @@
 
     <header>
         <h1>Matriz São Judas Tadeu</h1>
-        <p>Guia de Pastorais e Movimentos</p>
+        <p>Contatos de Pastorais e Movimentos</p>
     </header>
 
     <main>
+        <div class="secretaria-card">
+            <div>
+                <h2 style="color: var(--verde-padroeiro)">🆘 Dúvidas? Fale com a Secretaria</h2>
+                <p>Atendimento Paroquial Geral</p>
+            </div>
+            <div class="action-buttons" style="flex: 0 1 300px;">
+                <a href="https://wa.me/5538992410006" target="_blank" class="btn btn-whatsapp" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="tel:+5538992410006" class="btn btn-call" title="Ligar"><i class="fas fa-phone"></i></a>
+                <button onclick="copyToClipboard('38 99241-0006', this)" class="btn btn-copy" title="Copiar"><i class="fas fa-copy"></i></button>
+            </div>
+        </div>
+
         <div class="search-container">
-            <input type="text" id="searchInput" placeholder="🔍 Procure por pastoral, nome ou padre...">
+            <input type="text" id="searchInput" placeholder="🔍 Digite aqui para buscar...">
         </div>
 
         <div id="results"></div>
     </main>
 
     <footer>
-        <p>"Onde dois ou três estiverem reunidos em meu nome, eu estou ali, no meio deles." (Mt 18,20)</p>
-        <p style="margin-top: 10px; font-size: 0.8rem;">Pastoral de Conjunto - 2026</p>
+        <p>Devemos buscar a Pastoral de Conjunto!</p>
     </footer>
 
     <script>
         const pastorais = [
-            // NOVA INCLUSÃO
             { organismo: "Pastoral Litúrgica", nome: "Sarah", telefone: "38 99146-7612", diretor: "Pe. Marco Simões" },
-            
-            // DADOS EXISTENTES
             { organismo: "Pastoral da Acolhida", nome: "Ionise", telefone: "38 98807-1653", diretor: "Pe. Marco Simões" },
             { organismo: "Grupo de Leitores", nome: "Alex / Maris", telefone: "38 99192-9243 / 38 99141-9993", diretor: "Pe. Marco Simões" },
             { organismo: "Ministério de Coroinhas", nome: "Nilzete / Kátia", telefone: "38 99122-8414 / 38 99212-1213", diretor: "Pe. Marco Simões" },
@@ -222,72 +179,65 @@
             { organismo: "Batismo", nome: "Alex e Raissa", telefone: "38 99889-6867 / 38 99963-2130", diretor: "Pe. Mazinho e Diácono Paulo Antônio" },
             { organismo: "Pastoral Familiar", nome: "Aline e Luciano", telefone: "38 99740-4888 / 38 99997-9403", diretor: "Pe. Marco Simões" },
             { organismo: "Pastoral do Dizimo", nome: "Ruy e Cláudia", telefone: "38 99952-1530 / 38 99999-6910", diretor: "Diácono Paulo Nascimento" },
-            { organismo: "Apostolado da Oração", nome: "Gelza e Rubens", telefone: "38 98421-9661 / 38 99929-0464", diretor: "Diácono Paulo Nascimento" },
+            { organismo: "Apostolado Oração", nome: "Gelza e Rubens", telefone: "38 98421-9661 / 38 99929-0464", diretor: "Diácono Paulo Nascimento" },
             { organismo: "Mãe Rainha", nome: "Nice", telefone: "38 98409-4660", diretor: "Diácono Alvino" },
             { organismo: "Legião de Maria", nome: "Lucinha", telefone: "38 98858-5926", diretor: "Diácono Alvino" },
             { organismo: "Comunidade São Judas Tadeu (Conselho)", nome: "Raquel", telefone: "38 99908-4728", diretor: "Pe. Marco Simões" }
-        ].sort((a, b) => a.organismo.localeCompare(b.organismo)); // Ordenação Alfabética
+        ].sort((a, b) => a.organismo.localeCompare(b.organismo));
 
-        const searchInput = document.getElementById('searchInput');
-        const resultsContainer = document.getElementById('results');
-
-        function removerAcentos(texto) {
-            return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase();
+        function highlightText(text, query) {
+            if (!query) return text;
+            const re = new RegExp(`(${query.normalize("NFD").replace(/[\u0300-\u036f]/g, "")})`, "gi");
+            // Nota: Esta versão simplificada destaca o texto mantendo a lógica de busca sem acento
+            return text.replace(re, `<span class="highlight">$1</span>`);
         }
 
-        function formatarTelefones(telefoneStr) {
-            return telefoneStr.split(' / ').map(tel => {
-                const numLimpo = tel.replace(/\D/g, '');
-                const ddi = numLimpo.length <= 11 ? '55' : '';
-                const linkZap = `https://wa.me/${ddi}${numLimpo}`;
-                const linkCall = `tel:+${ddi}${numLimpo}`;
-                
-                return `
-                <div class="contact-group">
-                    <span class="tel-display">📞 ${tel}</span>
-                    <div class="action-buttons">
-                        <a href="${linkZap}" target="_blank" class="btn-contact btn-whatsapp">WhatsApp</a>
-                        <a href="${linkCall}" class="btn-contact btn-call">Ligar</a>
-                    </div>
-                </div>`;
-            }).join('');
+        function copyToClipboard(text, btn) {
+            navigator.clipboard.writeText(text);
+            const originalIcon = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-check"></i>';
+            setTimeout(() => btn.innerHTML = originalIcon, 2000);
         }
 
         function displayResults(query) {
-            resultsContainer.innerHTML = ''; 
-            const termo = removerAcentos(query);
+            const resultsContainer = document.getElementById('results');
+            resultsContainer.innerHTML = '';
             
-            const filtered = pastorais.filter(item => 
-                removerAcentos(item.organismo).includes(termo) || 
-                removerAcentos(item.nome).includes(termo) ||
-                removerAcentos(item.diretor).includes(termo)
-            );
+            const normalizedQuery = query.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 
-            if (filtered.length === 0) {
-                resultsContainer.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 2rem;">Ops! Não encontramos nada com esse nome.</div>';
-                return;
-            }
+            const filtered = pastorais.filter(item => {
+                const searchString = `${item.organismo} ${item.nome} ${item.diretor}`.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+                return searchString.includes(normalizedQuery);
+            });
 
             filtered.forEach(item => {
-                const label = item.organismo.includes('Comunidade') ? 'Conselheiro(a)' : 'Coordenação';
-                const div = document.createElement('div');
-                div.className = 'card';
-                div.innerHTML = `
-                    <div>
-                        <h2>🌿 ${item.organismo}</h2>
-                        <div class="info-row"><span class="icon">👤</span> <strong>${label}:</strong> ${item.nome}</div>
-                        <div class="info-row"><span class="icon">📱</span> <strong>Contatos:</strong></div>
-                        ${formatarTelefones(item.telefone)}
-                    </div>
-                    <div class="info-row" style="margin-top:15px; border-top: 1px solid #eee; pt: 10px;">
-                        <span class="icon">⛪</span> <small><strong>Dir. Espiritual:</strong> ${item.diretor}</small>
-                    </div>
+                const card = document.createElement('div');
+                card.className = 'card';
+                
+                const telefonesHtml = item.telefone.split(' / ').map(tel => {
+                    const numLimpo = tel.replace(/\D/g, '');
+                    return `
+                        <div class="contact-group">
+                            <small>📱 ${tel}</small>
+                            <div class="action-buttons">
+                                <a href="https://wa.me/55${numLimpo}" target="_blank" rel="noopener" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i></a>
+                                <a href="tel:+55${numLimpo}" class="btn btn-call"><i class="fas fa-phone"></i></a>
+                                <button onclick="copyToClipboard('${tel}', this)" class="btn btn-copy"><i class="fas fa-copy"></i></button>
+                            </div>
+                        </div>`;
+                }).join('');
+
+                card.innerHTML = `
+                    <h2>${highlightText(item.organismo, query)}</h2>
+                    <p><strong>👤 Coord:</strong> ${highlightText(item.nome, query)}</p>
+                    ${telefonesHtml}
+                    <p style="margin-top:10px; font-size:0.85rem"><strong>⛪ Dir:</strong> ${highlightText(item.diretor, query)}</p>
                 `;
-                resultsContainer.appendChild(div);
+                resultsContainer.appendChild(card);
             });
         }
 
-        searchInput.addEventListener('input', (e) => displayResults(e.target.value));
+        document.getElementById('searchInput').addEventListener('input', (e) => displayResults(e.target.value));
         displayResults('');
     </script>
 </body>
