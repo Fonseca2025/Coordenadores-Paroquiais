@@ -9,6 +9,7 @@
             --verde-padroeiro: #1B5E20; 
             --verde-claro: #4CAF50;
             --verde-whatsapp: #25D366;
+            --azul-ligar: #007AFF;
             --dourado: #FFC107; 
             --fundo: #F4F9F4;
             --texto-escuro: #333333;
@@ -126,41 +127,58 @@
 
         /* Estilização dos Links de Contato */
         .contact-group {
-            display: inline-flex;
-            align-items: center;
-            margin-right: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 15px;
             background: #f9f9f9;
-            padding: 4px 8px;
-            border-radius: 6px;
+            padding: 10px;
+            border-radius: 8px;
             border: 1px solid #eee;
         }
 
-        .link-tel {
-            color: var(--verde-padroeiro);
-            text-decoration: none;
+        .tel-display {
             font-weight: 600;
-            margin-right: 8px;
+            color: var(--verde-padroeiro);
+            font-size: 1rem;
+            margin-bottom: 2px;
         }
 
-        .link-tel:hover {
-            text-decoration: underline;
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
         }
 
-        .btn-whatsapp {
-            background-color: var(--verde-whatsapp);
-            color: white;
+        .btn-contact {
             text-decoration: none;
-            padding: 3px 8px;
-            border-radius: 4px;
+            padding: 6px 12px;
+            border-radius: 6px;
             font-size: 0.85rem;
             font-weight: bold;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             transition: 0.2s;
+            color: white;
+            flex: 1;
+            min-width: 100px;
+        }
+
+        .btn-whatsapp {
+            background-color: var(--verde-whatsapp);
         }
 
         .btn-whatsapp:hover {
             background-color: #1DA851;
+        }
+
+        .btn-call {
+            background-color: var(--azul-ligar);
+        }
+
+        .btn-call:hover {
+            background-color: #0056b3;
         }
 
         .no-results {
@@ -247,39 +265,33 @@
         const searchInput = document.getElementById('searchInput');
         const resultsContainer = document.getElementById('results');
 
-        // Função para remover acentos para melhorar a busca
         function removerAcentos(texto) {
             return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase();
         }
 
-        // Função para formatar os telefones e criar botão do WhatsApp
         function formatarTelefones(telefoneStr) {
-            // Separa caso existam dois números (ex: Numero 1 / Numero 2)
             const telefones = telefoneStr.split(' / ');
             
             return telefones.map(tel => {
-                // Pega apenas os números para montar os links
                 const numLimpo = tel.replace(/\D/g, ''); 
-                
-                // Formata o link do WhatsApp com o código do Brasil (55)
-                // Usa wa.me que é o formato correto para WhatsApp Web
                 const linkZap = `https://wa.me/55${numLimpo}?text=Olá`;
+                const linkCall = `tel:+55${numLimpo}`;
                 
                 return `
                 <div class="contact-group">
-                    <a href="tel:+55${numLimpo}" class="link-tel">${tel}</a>
-                    <a href="${linkZap}" target="_blank" class="btn-whatsapp">WhatsApp</a>
+                    <div class="tel-display">📱 ${tel}</div>
+                    <div class="action-buttons">
+                        <a href="${linkZap}" target="_blank" class="btn-contact btn-whatsapp">WhatsApp</a>
+                        <a href="${linkCall}" class="btn-contact btn-call">Ligar Agora</a>
+                    </div>
                 </div>`;
-            }).join('');
+            } ).join('');
         }
 
-        // Função para renderizar os dados na tela
         function displayResults(query) {
             resultsContainer.innerHTML = ''; 
-            
             const termoBusca = removerAcentos(query);
             
-            // Filtra por organismo, nome do coordenador ou diretor espiritual
             const filteredData = pastorais.filter(item => 
                 removerAcentos(item.organismo).includes(termoBusca) || 
                 removerAcentos(item.nome).includes(termoBusca) ||
@@ -294,11 +306,14 @@
             filteredData.forEach(item => {
                 const card = document.createElement('div');
                 card.className = 'card';
+                
+                const label = item.organismo.toLowerCase().includes('comunidade') ? 'Conselheiro' : 'Coordenação';
+                
                 card.innerHTML = `
                     <h2>🌿 ${item.organismo}</h2>
-                    <p><span class="icon">👤</span> <strong>Coord/Cons.:</strong> ${item.nome}</p>
-                    <p style="margin-bottom: 0;"><span class="icon">📱</span> <strong>Telefone:</strong></p>
-                    <div style="margin-bottom: 0.8rem; margin-left: 2rem;">
+                    <p><span class="icon">👤</span> <strong>${label}:</strong> ${item.nome}</p>
+                    <p style="margin-bottom: 0.5rem;"><span class="icon">📞</span> <strong>Contatos:</strong></p>
+                    <div>
                         ${formatarTelefones(item.telefone)}
                     </div>
                     <p><span class="icon">⛪</span> <strong>Dir. Espiritual:</strong> ${item.diretor}</p>
