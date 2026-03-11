@@ -261,12 +261,13 @@
                 // Pega apenas os números para montar os links
                 const numLimpo = tel.replace(/\D/g, ''); 
                 
-                // Formata o link do WhatsApp (Adiciona 55 do Brasil na frente)
-                const linkZap = `https://wa.me/55${numLimpo}`;
+                // Formata o link do WhatsApp com o código do Brasil (55)
+                // Usa wa.me que é o formato correto para WhatsApp Web
+                const linkZap = `https://wa.me/55${numLimpo}?text=Olá`;
                 
                 return `
                 <div class="contact-group">
-                    <a href="tel:${numLimpo}" class="link-tel">${tel}</a>
+                    <a href="tel:+55${numLimpo}" class="link-tel">${tel}</a>
                     <a href="${linkZap}" target="_blank" class="btn-whatsapp">WhatsApp</a>
                 </div>`;
             }).join('');
