@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guia de Contatos - Paróquia São Judas Tadeu</title>
+    <title>Contatos Paróquia São Judas Tadeu</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -13,7 +13,6 @@
             --azul-ligar: #007AFF;
             --fundo: #F0F4F0;
             --branco: #FFFFFF;
-            /* Categorias */
             --cor-liturgia: #1565C0;
             --cor-catequese: #EF6C00;
             --cor-conselho: #455A64;
@@ -26,54 +25,31 @@
 
         header {
             background: linear-gradient(135deg, var(--verde-padroeiro), var(--verde-claro));
-            color: white;
-            padding: 2rem 1rem;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            color: white; padding: 2rem 1rem; text-align: center;
         }
 
         main { max-width: 1000px; margin: 0 auto; padding: 1rem; }
 
         .secretaria-card {
-            background: white;
-            border-left: 10px solid #D32F2F;
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin: -1.5rem auto 2rem auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            position: relative;
-            z-index: 10;
+            background: white; border-left: 10px solid #D32F2F; border-radius: 12px;
+            padding: 1.5rem; margin: -1.5rem auto 2rem auto; display: flex;
+            align-items: center; justify-content: space-between; flex-wrap: wrap;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1); position: relative; z-index: 10;
         }
 
         .search-container { position: sticky; top: 10px; z-index: 1000; margin-bottom: 2rem; }
         #searchInput {
-            width: 100%;
-            padding: 1.2rem 1.5rem;
-            font-size: 1.1rem;
-            border: none;
-            border-radius: 50px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-            outline: none;
+            width: 100%; padding: 1.2rem 1.5rem; font-size: 1.1rem; border: none;
+            border-radius: 50px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); outline: none;
         }
 
         #results {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 1.5rem;
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;
         }
 
         .card {
-            background: white;
-            border-radius: 15px;
-            padding: 1.5rem;
-            transition: all 0.3s ease;
-            border-top: 8px solid var(--cor-borda);
-            display: flex;
-            flex-direction: column;
+            background: white; border-radius: 15px; padding: 1.5rem; transition: all 0.3s ease;
+            border-top: 8px solid var(--cor-borda); display: flex; flex-direction: column;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
 
@@ -102,7 +78,7 @@
         <div class="secretaria-card">
             <div>
                 <h2 style="color: #D32F2F"><i class="fas fa-info-circle"></i> Secretaria Paroquial</h2>
-                <p>Plantão e Informações Gerais</p>
+                <p>Atendimento Geral e Plantão</p>
                 <p><strong>(38) 99241-0006</strong></p>
             </div>
             <div class="action-buttons" style="min-width: 250px;">
@@ -121,51 +97,51 @@
 
     <script>
         const pastorais = [
-            { organismo: "Pastoral da Acolhida", nome: "Ionise", telefone: "38 98807-1653", diretor: "Pe. Marco Simões" },
-            { organismo: "Grupo de Leitores", nome: "Alex / Maris", telefone: "38 99192-9243 / 38 99141-9993", diretor: "Pe. Marco Simões" },
-            { organismo: "Ministério de Coroinhas", nome: "Nilzete / Kátia", telefone: "38 99122-8414 / 38 99212-1213", diretor: "Pe. Marco Simões" },
-            { organismo: "Ministério de Acólitos", nome: "Edmárcia", telefone: "38 99872-8347", diretor: "Pe. Marco Simões" },
-            { organismo: "Ministérios de Música", nome: "Jeanine", telefone: "38 98847-2393", diretor: "Pe. Marco Simões" },
-            { organismo: "MECEs", nome: "Yata / Suely", telefone: "38 99989-1979 / 38 99210-5556", diretor: "Pe. Marco Simões" },
-            { organismo: "Marcação de Missas", nome: "Edite", telefone: "38 99217-1120", diretor: "Pe. Marco Simões" },
-            { organismo: "Ornamentação", nome: "Terezinha", telefone: "38 99188-9211", diretor: "Pe. Marco Simões" },
-            { organismo: "Liturgia Mirim", nome: "Sandra", telefone: "38 98866-9139", diretor: "Pe. Marco Simões" },
-            { organismo: "PASCOM", nome: "Cris / Claudio", telefone: "38 96828-7007 / 38 99160-0007", diretor: "Pe. Marco Simões" },
-            { organismo: "Transmissão", nome: "Ávilo", telefone: "38 99112-6733", diretor: "Pe. Marco Simões" },
-            { organismo: "Núcleo Catequético", nome: "Josy", telefone: "38 99890-4207", diretor: "Pe. Mazinho" },
-            { organismo: "Catequese da Crisma", nome: "Júnia", telefone: "38 99940-6139", diretor: "Pe. Mazinho" },
-            { organismo: "Perseverança", nome: "Sandra", telefone: "38 98866-9139", diretor: "Pe. Mazinho" },
-            { organismo: "R.C.C.", nome: "Juliana", telefone: "38 98815-8348", diretor: "Pe. Mazinho" },
-            { organismo: "Círculos Bíblicos", nome: "Cleide", telefone: "38 99103-1180", diretor: "Pe. Mazinho" },
-            { organismo: "Catequese com Adultos", nome: "Ismael e Zizi", telefone: "38 99953-4278 / 38 99931-4326", diretor: "Pe. Mazinho e Diácono Paulo Antônio" },
+            { organismo: "Apostolado da Oração", nome: "Gelza e Rubens", telefone: "38 98421-9661 / 38 99929-0464", diretor: "Diácono Paulo Nascimento" },
+            { organismo: "Apostolado da Sagrada Face", nome: "Zina", telefone: "38 3216-1432 / 38 99212-2610", diretor: "Diácono Alvino" },
             { organismo: "Batismo", nome: "Alex e Raissa", telefone: "38 99889-6867 / 38 99963-2130", diretor: "Pe. Mazinho e Diácono Paulo Antônio" },
-            { organismo: "Pastoral Familiar", nome: "Aline e Luciano", telefone: "38 99740-4888 / 38 99997-9403", diretor: "Pe. Marco Simões" },
             { organismo: "Casos Consensuais", nome: "Gelza e Rubens", telefone: "38 98421-9661 / 38 99929-0464", diretor: "Pe. Marco Simões" },
-            { organismo: "Preparação Noivos", nome: "Terezinha e Gilberto", telefone: "38 99156-7579 / 38 99848-0513", diretor: "Pe. Marco Simões" },
+            { organismo: "Catequese com Adultos", nome: "Ismael e Zizi", telefone: "38 99953-4278 / 38 99931-4326", diretor: "Pe. Mazinho e Diácono Paulo Antônio" },
+            { organismo: "Catequese da Crisma", nome: "Júnia", telefone: "38 99940-6139", diretor: "Pe. Mazinho" },
+            { organismo: "Círculos Bíblicos", nome: "Cleide", telefone: "38 99103-1180", diretor: "Pe. Mazinho" },
+            { organismo: "Comunidade Bico da Pedra (Conselho)", nome: "Edilene", telefone: "38 9891-1058", diretor: "-" },
+            { organismo: "Comunidade Cristo Rei (Conselho)", nome: "Cleide", telefone: "38 99103-1180", diretor: "-" },
+            { organismo: "Comunidade N. Sra. da Boa Viagem (Conselho)", nome: "André", telefone: "38 9923-6172", diretor: "-" },
+            { organismo: "Comunidade Palmito (Conselho)", nome: "Socorro", telefone: "38 99966-6032", diretor: "-" },
+            { organismo: "Comunidade Salto (Conselho)", nome: "Ângela", telefone: "38 99839-9224", diretor: "-" },
+            { organismo: "Comunidade Santa Bárbara (Conselho)", nome: "Adriana", telefone: "38 99748-6801", diretor: "-" },
+            { organismo: "Comunidade Santo Inácio (Conselho)", nome: "Fábio e Vera", telefone: "38 99987-6852 / 38 99961-7629", diretor: "-" },
+            { organismo: "Comunidade São Judas Tadeu (Conselho)", nome: "Rachel", telefone: "38 99908-4728", diretor: "-" },
+            { organismo: "EAC", nome: "Joenilton e Érica", telefone: "38 98806-9824 / 38 98848-4384", diretor: "Pe. Marco Simões" },
             { organismo: "ECC", nome: "Hugo e Paula Jane", telefone: "38 99934-9727 / 38 99819-2981", diretor: "Pe. Marco Simões" },
             { organismo: "ENFIC", nome: "Maicon e Adriana", telefone: "38 99811-5499 / 38 99163-3049", diretor: "Pe. Marco Simões" },
-            { organismo: "EAC", nome: "Joenilton e Érica", telefone: "38 98806-9824 / 38 98848-4384", diretor: "Pe. Marco Simões" },
-            { organismo: "MAC", nome: "Felipe e Alessandra", telefone: "38 98403-4054 / 38 98415-7667", diretor: "Pe. Marco Simões" },
-            { organismo: "Pastoral do Dizimo", nome: "Ruy e Cláudia", telefone: "38 99952-1530 / 38 99999-6910", diretor: "Diácono Paulo Nascimento" },
-            { organismo: "Apostolado Oração", nome: "Gelza e Rubens", telefone: "38 98421-9661 / 38 99929-0464", diretor: "Diácono Paulo Nascimento" },
-            { organismo: "Mãe Rainha", nome: "Nice", telefone: "38 98409-4660", diretor: "Diácono Alvino" },
+            { organismo: "Grupo de Leitores", nome: "Alex / Maris", telefone: "38 99192-9243 / 38 99141-9993", diretor: "Pe. Marco Simões" },
             { organismo: "Legião de Maria", nome: "Lucinha", telefone: "38 98858-5926", diretor: "Diácono Alvino" },
+            { organismo: "Liturgia Mirim", nome: "Sandra", telefone: "38 98866-9139", diretor: "Pe. Marco Simões" },
+            { organismo: "MAC", nome: "Felipe e Alessandra", telefone: "38 98403-4054 / 38 98415-7667", diretor: "Pe. Marco Simões" },
+            { organismo: "Mãe Rainha", nome: "Nice", telefone: "38 98409-4660", diretor: "Diácono Alvino" },
+            { organismo: "Marcação de Missas", nome: "Edite", telefone: "38 99217-1120", diretor: "Pe. Marco Simões" },
+            { organismo: "MECEs", nome: "Yata / Suely", telefone: "38 99989-1979 / 38 99210-5556", diretor: "Pe. Marco Simões" },
+            { organismo: "Ministério de Acólitos", nome: "Edmárcia", telefone: "38 99872-8347", diretor: "Pe. Marco Simões" },
+            { organismo: "Ministério de Coroinhas", nome: "Nilzete / Kátia", telefone: "38 99122-8414 / 38 99212-1213", diretor: "Pe. Marco Simões" },
+            { organismo: "Ministérios de Música", nome: "Jeanine", telefone: "38 98847-2393", diretor: "Pe. Marco Simões" },
             { organismo: "Mulheres que Oram", nome: "Marília", telefone: "38 99172-0634", diretor: "Diácono Alvino" },
+            { organismo: "Núcleo Catequético", nome: "Josy", telefone: "38 99890-4207", diretor: "Pe. Mazinho" },
+            { organismo: "Ornamentação", nome: "Terezinha", telefone: "38 99188-9211", diretor: "Pe. Marco Simões" },
+            { organismo: "PASCOM", nome: "Cris / Claudio", telefone: "38 96828-7007 / 38 99160-0007", diretor: "Pe. Marco Simões" },
             { organismo: "Pastoral Carcerária", nome: "Dílson", telefone: "38 99800-8309 / 38 3214-1084", diretor: "Diácono Alvino" },
-            { organismo: "Apostolado da Sagrada Face", nome: "Zina", telefone: "38 3216-1432 / 38 99212-2610", diretor: "Diácono Alvino" },
-            { organismo: "Comunidade Cristo Rei (Conselho)", nome: "Cleide", telefone: "38 99103-1180", diretor: "-" },
-            { organismo: "Comunidade Santo Inácio (Conselho)", nome: "Fábio e Vera", telefone: "38 99987-6852 / 38 99961-7629", diretor: "-" },
-            { organismo: "Comunidade N. Sra. da Boa Viagem (Conselho)", nome: "André", telefone: "38 9923-6172", diretor: "-" },
-            { organismo: "Comunidade São Judas Tadeu (Conselho)", nome: "Rachel", telefone: "38 99908-4728", diretor: "-" },
-            { organismo: "Comunidade Santa Bárbara (Conselho)", nome: "Adriana", telefone: "38 99748-6801", diretor: "-" },
-            { organismo: "Comunidade Bico da Pedra (Conselho)", nome: "Edilene", telefone: "38 9891-1058", diretor: "-" },
-            { organismo: "Comunidade Salto (Conselho)", nome: "Ângela", telefone: "38 99839-9224", diretor: "-" },
-            { organismo: "Comunidade Palmito (Conselho)", nome: "Socorro", telefone: "38 99966-6032", diretor: "-" }
+            { organismo: "Pastoral da Acolhida", nome: "Ionise", telefone: "38 98807-1653", diretor: "Pe. Marco Simões" },
+            { organismo: "Pastoral do Dizimo", nome: "Ruy e Cláudia", telefone: "38 99952-1530 / 38 99999-6910", diretor: "Diácono Paulo Nascimento" },
+            { organismo: "Pastoral Familiar", nome: "Aline e Luciano", telefone: "38 99740-4888 / 38 99997-9403", diretor: "Pe. Marco Simões" },
+            { organismo: "Perseverança", nome: "Sandra", telefone: "38 98866-9139", diretor: "Pe. Mazinho" },
+            { organismo: "Preparação Noivos", nome: "Terezinha e Gilberto", telefone: "38 99156-7579 / 38 99848-0513", diretor: "Pe. Marco Simões" },
+            { organismo: "R.C.C.", nome: "Juliana", telefone: "38 98815-8348", diretor: "Pe. Mazinho" },
+            { organismo: "Transmissão", nome: "Ávilo", telefone: "38 99112-6733", diretor: "Pe. Marco Simões" }
         ];
 
         function getCategoryColor(org) {
             const n = org.toLowerCase();
-            if (n.includes('liturgia') || n.includes('leitores') || n.includes('música') || n.includes('coroinhas') || n.includes('acólitos') || n.includes('missas') || n.includes('ornamentação')) return 'var(--cor-liturgia)';
+            if (n.includes('liturgia') || n.includes('leitores') || n.includes('música') || n.includes('coroinhas') || n.includes('acólitos') || n.includes('missas') || n.includes('ornamentação') || n.includes('acolhida') || n.includes('transmissão') || n.includes('pascom')) return 'var(--cor-liturgia)';
             if (n.includes('catequese') || n.includes('crisma') || n.includes('batismo') || n.includes('bíblicos') || n.includes('perseverança')) return 'var(--cor-catequese)';
             if (n.includes('comunidade') || n.includes('conselho')) return 'var(--cor-conselho)';
             if (n.includes('familiar') || n.includes('noivos') || n.includes('ecc') || n.includes('eac') || n.includes('mac') || n.includes('enfic') || n.includes('consensuais')) return 'var(--cor-familia)';
@@ -181,8 +157,7 @@
         function copyToClipboard(text, btn) {
             navigator.clipboard.writeText(text);
             const icon = btn.innerHTML;
-            btn.classList.add('success');
-            btn.innerHTML = '<i class="fas fa-check"></i>';
+            btn.classList.add('success'); btn.innerHTML = '<i class="fas fa-check"></i>';
             setTimeout(() => { btn.classList.remove('success'); btn.innerHTML = icon; }, 2000);
         }
 
